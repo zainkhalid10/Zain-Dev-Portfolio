@@ -1,191 +1,185 @@
 export const config = {
     developer: {
-        name: "Redoyanul",
-        fullName: "Redoyanul Haque",
-        title: "AI & Full-Stack Developer",
-        description: "AI & Full-Stack Developer building intelligent systems and modern web applications. Passionate about machine learning, deep learning, and creating next-gen autonomous agents."
+        name: "Muhammad Zain",
+        fullName: "Muhammad Zain",
+        title: "Computer Scientist",
+        description: "I make intelligent systems by blending my CS roots with advanced AI development."
     },
     social: {
-        github: "red1-for-hek",
-        email: "redoyanul1234@gmail.com",
-        location: "Bangladesh"
+        github: "zainkhalid10",
+        email: "of.mzain@gmail.com",
+        location: "Islamabad, Pakistan, 47080"
     },
     about: {
         title: "About Me",
-        description: "I am a self-taught AI & Full-Stack Developer from Bangladesh. I build intelligent systems, chatbots, and modern web applications. My expertise includes Machine Learning, Deep Learning, NLP, and Full-Stack Web Development with React, Node.js, and Python. Currently building next-gen AI Agents and JARVIS-like Personal Assistants. I have a competitive programming mindset and a deep passion for automation. Code is poetry, AI is the canvas."
+        description: "Graduated with a Bachelors in Computer Science from FAST NUCES with strong full-stack development foundations and a deep interest in AI/ML. I build responsive interfaces, scalable APIs, and practical end-to-end software solutions using modern web technologies and data-driven engineering."
     },
     experiences: [
         {
-            position: "Learning Something New",
-            company: "Self-Development",
-            period: "2025 - Present",
-            location: "Bangladesh",
-            description: "Continuously exploring emerging technologies, researching advanced AI systems, and pushing the boundaries of what's possible in tech.",
+            position: "Content Manager",
+            company: "American Darling (US)",
+            period: "Oct 2025 - Nov 2026",
+            location: "Remote",
+            description: "Managed digital content operations and production workflows for brand-facing assets.",
             responsibilities: [
-                "Researching cutting-edge AI and ML technologies",
-                "Experimenting with new frameworks and tools",
-                "Contributing to open-source projects",
-                "Building innovative personal projects"
+                "Planned and maintained content calendars and publishing pipelines",
+                "Coordinated with design and marketing teams on deliverables",
+                "Optimized content quality, consistency, and turnaround time",
+                "Supported campaign execution with measurable outcomes"
             ],
-            technologies: ["Research", "Innovation", "Open Source", "New Tech"]
+            technologies: ["Content Strategy", "Campaign Operations", "Digital Publishing", "Collaboration"]
         },
         {
-            position: "AI Engineer",
-            company: "Freelance & Projects",
-            period: "2025",
-            location: "Bangladesh",
-            description: "Developing intelligent AI systems, chatbots, and machine learning solutions. Building next-gen conversational AI agents and JARVIS-like personal assistants.",
+            position: "Employee",
+            company: "StratifyOne (UK)",
+            period: "Jul 2025 - Sep 2025",
+            location: "Islamabad, Pakistan",
+            description: "Contributed to team execution and operational delivery in a fast-paced environment.",
             responsibilities: [
-                "Building AI-powered chatbots and conversational agents",
-                "Developing machine learning models with TensorFlow and PyTorch",
-                "Working with LLMs and transformer architectures",
-                "Creating autonomous AI systems and automation tools"
+                "Supported day-to-day project workflows and deliverables",
+                "Collaborated with internal stakeholders on assigned tasks",
+                "Maintained quality and consistency across responsibilities",
+                "Adapted quickly to changing priorities"
             ],
-            technologies: ["Python", "TensorFlow", "PyTorch", "LLMs", "NLP", "AI Agents"]
+            technologies: ["Teamwork", "Execution", "Communication", "Operations"]
+        }
+    ],
+    coCurricular: [
+        {
+            position: "Teacher Assistant",
+            company: "FAST-NUCES, Islamabad Campus",
+            period: "Jan 2026 - Present",
+            location: "Islamabad, Pakistan",
+            description: "Mentor and assess junior students for the Statistical and Modelling course, with a focus on conceptual clarity and practical problem solving."
         },
         {
-            position: "Full-Stack Developer",
-            company: "Freelance & Projects",
-            period: "2024",
-            location: "Bangladesh",
-            description: "Built complete web applications from frontend to backend. Developed responsive UIs, RESTful APIs, and database solutions for various clients and projects.",
-            responsibilities: [
-                "Developing full-stack web applications using React and Node.js",
-                "Building RESTful APIs and integrating databases",
-                "Creating responsive and interactive user interfaces",
-                "Deploying and maintaining web applications"
-            ],
-            technologies: ["React", "Node.js", "MongoDB", "Express", "Next.js", "TypeScript"]
+            position: "Campus Ambassador",
+            company: "3Musafir International",
+            period: "Oct 2025 - Present",
+            location: "Islamabad, Pakistan",
+            description: "Promote brand initiatives on campus, collaborate with student societies, and coordinate events to increase reach and engagement."
         },
         {
-            position: "Python Developer",
-            company: "Self-Taught & Projects",
-            period: "2023",
-            location: "Bangladesh",
-            description: "Dove deep into Python programming, building automation scripts, bots, and mastering the fundamentals of software development and problem-solving.",
-            responsibilities: [
-                "Learning Python programming and core concepts",
-                "Building automation scripts and Discord bots",
-                "Exploring data structures and algorithms",
-                "Participating in competitive programming"
-            ],
-            technologies: ["Python", "Automation", "Scripting", "Discord.py", "Problem Solving"]
+            position: "Head Team Media",
+            company: "FAST Adventure Society",
+            period: "Sep 2024 - Aug 2025",
+            location: "Islamabad, Pakistan",
+            description: "Led social media strategy and managed visual content pipelines for society campaigns, activities, and announcements."
         },
         {
-            position: "Graphic Designer",
-            company: "Freelance",
-            period: "2022",
-            location: "Bangladesh",
-            description: "Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.",
-            responsibilities: [
-                "Designing logos and brand identity materials",
-                "Creating social media graphics and banners",
-                "Working with clients on creative projects",
-                "Learning design principles and visual aesthetics"
-            ],
-            technologies: ["Photoshop", "Illustrator", "Canva", "Figma", "Visual Design"]
-        },
-        {
-            position: "Microsoft Office",
-            company: "Begin Learning",
-            period: "2021",
-            location: "Bangladesh",
-            description: "Started my journey into the digital world by learning Microsoft Office tools. This foundational step introduced me to computers and sparked my curiosity for technology.",
-            responsibilities: [
-                "Learning Microsoft Word, Excel, and PowerPoint",
-                "Creating documents and presentations",
-                "Understanding basic computer operations",
-                "Building foundational digital skills"
-            ],
-            technologies: ["MS Word", "MS Excel", "MS PowerPoint", "Computer Basics"]
+            position: "Head Team Media",
+            company: "Takhleeq FAST Islamabad",
+            period: "Sep 2024 - Aug 2025",
+            location: "Islamabad, Pakistan",
+            description: "Directed media planning and content publishing, ensuring consistent branding and timely communication across social platforms."
         }
     ],
     projects: [
         {
             id: 1,
-            title: "Drishti",
-            category: "AI / LLM",
-            technologies: "Python, PyTorch, Transformers, FastAPI, React, MongoDB",
-            image: "/images/drishti.png",
-            description: "Bangladesh's first intelligent advanced AI chatbot powered by a custom Large Language Model. Features natural language understanding, contextual conversations, and multilingual support including Bengali."
+            title: "FlowMind",
+            category: "AI Productivity",
+            technologies: "Next.js, TypeScript, Prisma, React, AI",
+            image: "/images/project-1.webp",
+            description: "AI-powered platform that generates personalized routines based on personality profile, energy levels, and goals."
         },
         {
             id: 2,
-            title: "VoteChain",
-            category: "Blockchain",
-            technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask, Node.js",
-            image: "/images/votechain.png",
-            description: "A decentralized election system built on blockchain technology ensuring transparent, tamper-proof, and verifiable voting. Features smart contracts for vote integrity and real-time result tracking."
+            title: "Neuro-Crypt",
+            category: "Fintech / AI",
+            technologies: "TypeScript, ML, Sentiment Analysis, Analytics",
+            image: "/images/project-2.webp",
+            description: "Behavioral crypto analytics platform combining sentiment, market signals, and ML-driven forecasting."
         },
         {
             id: 3,
-            title: "EIE - Earthquake Impact Estimator",
-            category: "IoT / Hardware",
-            technologies: "Arduino, C++, IoT Sensors, Python, ML, React",
-            image: "/images/eie.png",
-            description: "A practical circuit-based IoT system utilizing Arduino to predict earthquakes before they strike. Integrates hardware sensors for real-time seismic detection and impact estimation."
+            title: "Generative Ad",
+            category: "Generative AI",
+            technologies: "Python, Deep Learning, AI/ML",
+            image: "/images/project-3.webp",
+            description: "AI-driven ad generation platform for producing and optimizing creative campaign content."
         },
         {
             id: 4,
-            title: "GameKroy",
-            category: "Full Stack",
-            technologies: "React, Node.js, MongoDB, Express, Stripe, TailwindCSS",
-            image: "/images/gamekroy.png",
-            description: "A full-featured e-commerce platform for gaming products. Includes user authentication, product catalog, shopping cart, secure payments, order tracking, and admin dashboard."
+            title: "Theft-Detection",
+            category: "Computer Vision",
+            technologies: "YOLOv8, ByteTrack, Python, OpenCV",
+            image: "/images/project-4.webp",
+            description: "Real-time surveillance theft detection and tracking system with event annotation and alerts."
         },
         {
             id: 5,
-            title: "RedxChess",
-            category: "AI / Game Engine",
-            technologies: "Python, C++, Neural Networks, Bitboards, UCI Protocol",
-            image: "/images/redxchess.png",
-            description: "A high-performance chess engine rated 3640 ELO. Features advanced search algorithms, neural network evaluation, and optimized bitboard representation for lightning-fast move generation."
+            title: "Body-parts-detector",
+            category: "Computer Vision",
+            technologies: "OpenCV, MediaPipe, Python",
+            image: "/images/project-5.webp",
+            description: "Real-time body part detector using MediaPipe and OpenCV."
         },
         {
             id: 6,
-            title: "Floodhub",
-            category: "AI / ML",
-            technologies: "Python, TensorFlow, Pandas, React, FastAPI, GIS",
-            image: "/images/floodhub.png",
-            description: "A flood prediction model specifically designed for Bangladesh's river systems. Analyzes weather patterns, water levels, and historical data to provide accurate flood forecasts and alerts."
+            title: "Finger Gesture Calculator",
+            category: "Computer Vision",
+            technologies: "MediaPipe, OpenCV, Python",
+            image: "/images/placeholder.webp",
+            description: "Finger-based gesture calculator for arithmetic operations."
         },
         {
             id: 7,
-            title: "Phoenix",
-            category: "AI Assistant",
-            technologies: "Python, Speech Recognition, PyAutoGUI, OpenAI API, Tkinter",
-            image: "/images/phoenix.png",
-            description: "A JARVIS-inspired personal AI desktop assistant. Controls system functions, manages tasks, answers queries, automates workflows, and provides voice-activated computing experience."
+            title: "FingerTracker",
+            category: "Computer Vision",
+            technologies: "MediaPipe, OpenCV, Python",
+            image: "/images/placeholder.webp",
+            description: "Gesture-based drawing system on a virtual canvas."
         },
         {
             id: 8,
-            title: "HekTools",
-            category: "Security / Android",
-            technologies: "Kotlin, Android SDK, Firebase, Python, Encryption",
-            image: "/images/hektools.png",
-            description: "An advanced Android monitoring and security research tool. Features remote device management, activity logging, and encrypted data transmission for security testing purposes."
+            title: "VanishingShirt",
+            category: "Computer Vision",
+            technologies: "MediaPipe, OpenCV, Python",
+            image: "/images/placeholder.webp",
+            description: "Real-time shirt vanishing effect with gesture triggers."
+        },
+        {
+            id: 9,
+            title: "Secure File Storage System with RBAC",
+            category: "Security",
+            technologies: "Flask, Python, AES-256, RSA, RBAC, HMAC",
+            image: "/images/placeholder.webp",
+            description: "Secure file storage system with encrypted files, role-based access control, and auditable activity logs."
+        },
+        {
+            id: 10,
+            title: "Tetris Game",
+            category: "Game Development",
+            technologies: "C++, SFML",
+            image: "/images/placeholder.webp",
+            description: "Classic Tetris implementation with game loops, collision logic, scoring, and polished controls."
         }
     ],
     contact: {
-        email: "redoyanul1234@gmail.com",
-        github: "https://github.com/red1-for-hek",
-        linkedin: "https://linkedin.com/in/red1-for-hek",
-        twitter: "https://x.com/red_1_ul",
-        facebook: "https://www.facebook.com/redoyanulhaque.hacker.official",
-        instagram: "https://www.instagram.com/red_1_ul"
+        email: "of.mzain@gmail.com",
+        phone: "+92 303 0603432",
+        whatsapp: "https://wa.me/923030603432",
+        github: "https://github.com/zainkhalid10",
+        linkedin: "https://www.linkedin.com/in/muhammad-zain-a0313630b",
+        twitter: "https://x.com/onlyzainss",
+        facebook: "https://www.facebook.com/muhammadzain459/",
+        instagram: "https://instagram.com/onlyzainss",
+        instagramSecondary: "https://instagram.com/c.art.___",
+        resume: "https://raw.githubusercontent.com/zainkhalid10/Portfolio/main/CV.pdf"
     },
     skills: {
         develop: {
-            title: "AI DEVELOPER",
-            description: "Building intelligent systems & AI solutions",
-            details: "Developing AI agents, chatbots, and machine learning models using Python, TensorFlow, and PyTorch. Specializing in LLMs, NLP, deep learning, and autonomous systems.",
-            tools: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn", "LLMs", "NLP", "Deep Learning", "Chatbots", "AI Agents"]
+            title: "WEB DEVELOPMENT & AI/ML",
+            description: "Building intelligent and scalable software products",
+            details: "I work across frontend, backend, cloud, and machine learning workflows to build complete solutions with strong engineering fundamentals.",
+            tools: ["React", "Next.js", "Node.js", "Express", "Python", "Java", "C++", "TensorFlow", "PyTorch", "OpenCV"]
         },
         design: {
-            title: "FULL-STACK",
-            description: "Modern web development & scalable applications",
-            details: "Building responsive and performant web applications using React, Next.js, Node.js, and databases. Creating seamless user experiences with modern UI/UX principles.",
-            tools: ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "TailwindCSS", "REST APIs", "Docker", "Git"]
+            title: "FULL-STACK & DEVOPS",
+            description: "From UI to deployment and operations",
+            details: "I create production-focused systems with robust APIs, reliable databases, and practical deployment workflows.",
+            tools: ["MySQL", "MongoDB", "PostgreSQL", "Docker", "Kubernetes", "AWS", "Git", "CI/CD", "TailwindCSS", "UI/UX"]
         }
     }
 };
