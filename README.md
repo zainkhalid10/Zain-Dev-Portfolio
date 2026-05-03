@@ -107,7 +107,7 @@ http://localhost:3000
 
 Visit the portfolio:
 
-👉 [https://zain.software](https://zain.software)
+👉 [https://zain-dev-portfolio-five.vercel.app/](https://zain-dev-portfolio-five.vercel.app/)
 
 ---
 
@@ -145,8 +145,8 @@ This project is licensed under the MIT License.
 **Zain Khalid**
 
 * GitHub: [https://github.com/zainkhalid10](https://github.com/zainkhalid10)
-* Portfolio: [[https://zain.software](https://zain.software](https://zain-dev-portfolio-five.vercel.app/))
-* LinkedIn: https://www.linkedin.com/in/muhammad-zain-a0313630b/https://www.linkedin.com/in/muhammad-zain-a0313630b/
+* Portfolio: [https://zain-dev-portfolio-five.vercel.app/](https://zain-dev-portfolio-five.vercel.app/)
+* LinkedIn: [https://www.linkedin.com/in/muhammad-zain-a0313630b/?skipRedirect=true](https://www.linkedin.com/in/muhammad-zain-a0313630b/?skipRedirect=true)
 
 ---
 
