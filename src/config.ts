@@ -16,32 +16,25 @@ export const config = {
     },
     experiences: [
         {
-            position: "Content Manager",
-            company: "American Darling (US)",
-            period: "Oct 2025 - Nov 2026",
+            position: "AI Engineer",
+            company: "American Darling",
+            period: "Sep 2025 - Feb 2026",
             location: "Remote",
-            description: "Managed digital content operations and production workflows for brand-facing assets.",
-            responsibilities: [
-                "Planned and maintained content calendars and publishing pipelines",
-                "Coordinated with design and marketing teams on deliverables",
-                "Optimized content quality, consistency, and turnaround time",
-                "Supported campaign execution with measurable outcomes"
-            ],
-            technologies: ["Content Strategy", "Campaign Operations", "Digital Publishing", "Collaboration"]
-        },
-        {
-            position: "Employee",
-            company: "StratifyOne (UK)",
-            period: "Jul 2025 - Sep 2025",
-            location: "Islamabad, Pakistan",
-            description: "Contributed to team execution and operational delivery in a fast-paced environment.",
-            responsibilities: [
-                "Supported day-to-day project workflows and deliverables",
-                "Collaborated with internal stakeholders on assigned tasks",
-                "Maintained quality and consistency across responsibilities",
-                "Adapted quickly to changing priorities"
-            ],
-            technologies: ["Teamwork", "Execution", "Communication", "Operations"]
+            description:
+                "Built automation pipelines for creative teams to generate, optimize, and schedule content at scale. Leveraged OpenAI API, Hugging Face Transformers, and LangChain for content generation workflows, combined with Zapier and Make for task orchestration. Implemented scheduling and publishing pipelines via Buffer and Hootsuite. Developed lightweight backend services using FastAPI and managed data flows with SQLite. Focused on prompt engineering, workflow automation, and integrating AI into marketing operations to improve content consistency and turnaround time.",
+            technologies: [
+                "OpenAI API",
+                "Hugging Face Transformers",
+                "LangChain",
+                "Zapier",
+                "Make",
+                "Buffer",
+                "Hootsuite",
+                "FastAPI",
+                "SQLite",
+                "Prompt Engineering",
+                "Workflow Automation"
+            ]
         }
     ],
     coCurricular: [
