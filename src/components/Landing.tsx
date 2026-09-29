@@ -11,9 +11,6 @@ const Landing = ({ children }: PropsWithChildren) => {
   const spotlightRef = useRef<HTMLDivElement>(null);
   const primaryCtaRef = useRef<HTMLButtonElement>(null);
   const secondaryCtaRef = useRef<HTMLButtonElement>(null);
-  const nameParts = config.developer.fullName.split(" ");
-  const firstName = nameParts[0] || config.developer.name;
-  const lastName = nameParts.slice(1).join(" ") || "";
   const locationLabel = config.social.location.split(",")[0];
 
   useEffect(() => {

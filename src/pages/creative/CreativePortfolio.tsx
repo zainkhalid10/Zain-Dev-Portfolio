@@ -617,7 +617,7 @@ export default function CreativePortfolio() {
 
           {/* RIGHT column — clipping container; art panels stream ↑ */}
           <div className="cp2-stack-right">
-            {works.map((w, i) => (
+            {works.map((w) => (
               <div
                 key={w.id}
                 className="cp2-sart"
