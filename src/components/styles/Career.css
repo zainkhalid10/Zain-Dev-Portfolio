@@ -12,9 +12,15 @@
   padding: 120px 0px;
 }
 
+.career-eyebrow {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .career-section h2 {
-  font-size: 70px;
-  line-height: 70px;
+  font-size: clamp(40px, 5vw, 70px);
+  line-height: 1.05;
   font-weight: 400;
   text-align: center;
   background: linear-gradient(0deg, #7f40ff, #ffffff);
@@ -22,8 +28,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  margin-top: 50px;
+  margin-top: 0;
   margin-bottom: 90px;
+  letter-spacing: -0.02em;
 }
 
 .career-section h2>span {
@@ -102,45 +109,11 @@
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-  background-color: #aa42ff;
-  width: 10px;
-  height: 10px;
-  border-radius: 50px;
-  box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 8px #d097ff,
-    0px 0px 110px 20px #f2c0ff;
-  animation: timeline 0.8s linear infinite forwards;
-}
-
-@keyframes timeline {
-
-  10%,
-  20%,
-  50%,
-  70%,
-  90% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
-  }
-
-  10%,
-  30%,
-  0%,
-  100%,
-  64%,
-  80% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
-  }
-}
-
-@keyframes timeline2 {
-  0% {
-    box-shadow: 0px 0px 5px 2px #d29bff;
-  }
-
-  100% {
-    box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 5px #d097ff,
-      0px 0px 110px 20px #f2c0ff;
-  }
+  background-color: var(--accentColor);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(194, 164, 255, 0.5);
 }
 
 @media only screen and (max-width: 1400px) {

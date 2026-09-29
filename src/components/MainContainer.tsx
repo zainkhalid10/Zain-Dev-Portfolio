@@ -12,6 +12,7 @@ import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
+import { initScrollReveals } from "./utils/motion";
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -26,10 +27,14 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     };
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
+
+    const cleanupReveals = initScrollReveals();
+
     return () => {
       window.removeEventListener("resize", resizeHandler);
+      cleanupReveals();
     };
-  }, [isDesktopView]);
+  }, []);
 
   return (
     <div className="container-main">

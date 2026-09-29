@@ -1,5 +1,5 @@
 import { config } from "../config";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -9,65 +9,88 @@ import "./styles/Navbar.css";
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
 
+const NAV_SECTIONS = [
+  { id: "about", label: "ABOUT" },
+  { id: "work", label: "WORK" },
+  { id: "contact", label: "CONTACT" },
+];
+
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const scrollToSection = (selector: string) => {
+    const target = document.querySelector(selector) as HTMLElement;
+    if (target && lenis) {
+      lenis.scrollTo(target, { offset: 0, duration: 1.35 });
+    } else if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+    setMenuOpen(false);
+  };
+
   useEffect(() => {
-    // Initialize Lenis smooth scroll
     lenis = new Lenis({
-      duration: 1.7,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.7,
-      touchMultiplier: 2,
+      wheelMultiplier: 1.5,
+      touchMultiplier: 1.8,
       infinite: false,
     });
 
-    // Start paused
     lenis.stop();
 
-    // Handle smooth scroll animation frame
     function raf(time: number) {
       lenis?.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    // Handle navigation links
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          if (section && lenis) {
-            const target = document.querySelector(section) as HTMLElement;
-            if (target) {
-              lenis.scrollTo(target, {
-                offset: 0,
-                duration: 1.5,
-              });
-            }
-          }
-        }
-      });
-    });
+    const onScroll = ({ scroll, limit }: { scroll: number; limit: number }) => {
+      setScrolled(scroll > 48);
+      setScrollProgress(limit > 0 ? (scroll / limit) * 100 : 0);
+    };
 
-    // Handle resize
-    window.addEventListener("resize", () => {
-      lenis?.resize();
-    });
+    lenis.on("scroll", onScroll);
+
+    const sectionTriggers = NAV_SECTIONS.map(({ id }) =>
+      ScrollTrigger.create({
+        trigger: `#${id}`,
+        start: "top 45%",
+        end: "bottom 45%",
+        onEnter: () => setActiveSection(id),
+        onEnterBack: () => setActiveSection(id),
+      })
+    );
+
+    window.addEventListener("resize", () => lenis?.resize());
 
     return () => {
       lenis?.destroy();
+      lenis = null;
+      sectionTriggers.forEach((t) => t.kill());
     };
   }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle("nav-menu-open", menuOpen);
+    return () => document.body.classList.remove("nav-menu-open");
+  }, [menuOpen]);
+
   return (
     <>
-      <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
+      <div
+        className="scroll-progress"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
+      <header className={`header ${scrolled ? "header-scrolled" : ""}`}>
+        <a href="/" className="navbar-title" data-cursor="disable" title="Back to gateway">
           {config.developer.name}
         </a>
         <a
@@ -77,28 +100,55 @@ const Navbar = () => {
         >
           {config.contact.email}
         </a>
-        <ul>
-          <li>
-            <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
-            </a>
-          </li>
-        </ul>
-      </div>
 
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
-      <div className="nav-fade"></div>
+        <button
+          type="button"
+          className={`nav-toggle ${menuOpen ? "nav-toggle-open" : ""}`}
+          aria-expanded={menuOpen}
+          aria-controls="site-nav"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen((open) => !open)}
+          data-cursor="disable"
+        >
+          <span />
+          <span />
+        </button>
+
+        <nav id="site-nav" className={menuOpen ? "nav-open" : ""} aria-label="Primary">
+          <ul>
+            {NAV_SECTIONS.map(({ id, label }) => (
+              <li key={id} className={activeSection === id ? "nav-active" : ""}>
+                <a
+                  href={`#${id}`}
+                  data-cursor="disable"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(`#${id}`);
+                  }}
+                >
+                  <HoverLinks text={label} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
+
+      <div className="landing-circle1" aria-hidden="true" />
+      <div className="landing-circle2" aria-hidden="true" />
+      <div
+        className={`nav-fade ${scrolled ? "nav-fade-visible" : ""}`}
+        aria-hidden="true"
+      />
+      {menuOpen && (
+        <button
+          type="button"
+          className="nav-backdrop"
+          aria-label="Close menu"
+          onClick={() => setMenuOpen(false)}
+          data-cursor="disable"
+        />
+      )}
     </>
   );
 };

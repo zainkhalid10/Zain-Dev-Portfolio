@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextSplitter } from "../../utils/textSplitter";
+import { shouldAnimate } from "./motion";
 
 interface ParaElement extends HTMLElement {
   anim?: gsap.core.Animation;
@@ -11,7 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
-  if (window.innerWidth < 900) return;
+  if (window.innerWidth < 900 || !shouldAnimate()) return;
+
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
 
@@ -32,7 +34,7 @@ export default function setSplitText() {
 
     para.anim = gsap.fromTo(
       para.split.words,
-      { autoAlpha: 0, y: 80 },
+      { autoAlpha: 0, y: 48 },
       {
         autoAlpha: 1,
         scrollTrigger: {
@@ -40,13 +42,14 @@ export default function setSplitText() {
           toggleActions: ToggleAction,
           start: TriggerStart,
         },
-        duration: 1,
+        duration: 0.85,
         ease: "power3.out",
         y: 0,
         stagger: 0.02,
       }
     );
   });
+
   titles.forEach((title: ParaElement) => {
     if (title.anim) {
       title.anim.progress(1).kill();
@@ -58,7 +61,7 @@ export default function setSplitText() {
     });
     title.anim = gsap.fromTo(
       title.split.chars,
-      { autoAlpha: 0, y: 80, rotate: 10 },
+      { autoAlpha: 0, y: 40 },
       {
         autoAlpha: 1,
         scrollTrigger: {
@@ -66,14 +69,11 @@ export default function setSplitText() {
           toggleActions: ToggleAction,
           start: TriggerStart,
         },
-        duration: 0.8,
-        ease: "power2.inOut",
+        duration: 0.7,
+        ease: "power3.out",
         y: 0,
-        rotate: 0,
-        stagger: 0.03,
+        stagger: 0.025,
       }
     );
   });
-
-  ScrollTrigger.addEventListener("refresh", () => setSplitText());
 }

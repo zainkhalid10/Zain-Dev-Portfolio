@@ -1,0 +1,175 @@
+/* ======================================================
+   ARTIST AVATAR — Interactive SVG Character
+   ====================================================== */
+
+/* ── Container ───────────────────────────────────────── */
+.aa-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* ── SVG base ────────────────────────────────────────── */
+.aa-svg {
+  width: 100%;
+  max-width: 310px;
+  height: auto;
+  cursor: none;
+  filter: drop-shadow(0 20px 48px rgba(240, 165, 0, 0.14))
+          drop-shadow(0 4px 16px rgba(13, 10, 6, 0.5));
+  animation: aa-float 5.5s ease-in-out infinite;
+  will-change: transform;
+  transition: filter 0.4s ease;
+  overflow: visible;
+}
+
+.aa-svg:hover {
+  filter: drop-shadow(0 26px 56px rgba(240, 165, 0, 0.28))
+          drop-shadow(0 8px 20px rgba(13, 10, 6, 0.4));
+}
+
+/* Gentle float */
+@keyframes aa-float {
+  0%,  100% { transform: translateY(0px)   rotate(0deg); }
+  30%        { transform: translateY(-13px) rotate(0.4deg); }
+  70%        { transform: translateY(-6px)  rotate(-0.3deg); }
+}
+
+/* ── Rotating ambient rings ──────────────────────────── */
+.aa-ring {
+  transform-box: view-box;
+}
+
+.aa-ring-cw {
+  transform-origin: 50% 46.25%; /* 185 / 400 */
+  animation: aa-spin-cw 36s linear infinite;
+}
+
+.aa-ring-ccw {
+  transform-origin: 50% 46.25%;
+  animation: aa-spin-ccw 50s linear infinite;
+}
+
+@keyframes aa-spin-cw  { to { transform: rotate(360deg);  } }
+@keyframes aa-spin-ccw { to { transform: rotate(-360deg); } }
+
+/* ── Floating particles ──────────────────────────────── */
+.aa-p {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.aa-p1 { animation: aa-p-float-a 4.2s ease-in-out infinite; }
+.aa-p2 { animation: aa-p-float-b 5.4s ease-in-out infinite; }
+.aa-p3 { animation: aa-p-float-c 3.8s ease-in-out infinite; }
+.aa-p4 { animation: aa-p-float-a 6.2s ease-in-out infinite; animation-delay: -1s; }
+.aa-p5 { animation: aa-p-float-b 4.8s ease-in-out infinite; animation-delay: -2.5s; }
+.aa-p6 { animation: aa-p-float-c 3.3s ease-in-out infinite; animation-delay: -0.7s; }
+.aa-p7 { animation: aa-p-float-a 5.0s ease-in-out infinite; animation-delay: -3s; }
+
+@keyframes aa-p-float-a {
+  0%, 100% { transform: translate(0, 0)   scale(1);    }
+  50%       { transform: translate(8px, -14px) scale(1.1); }
+}
+@keyframes aa-p-float-b {
+  0%, 100% { transform: translate(0, 0)    scale(1);   }
+  50%       { transform: translate(-9px, 12px) scale(0.9); }
+}
+@keyframes aa-p-float-c {
+  0%, 100% { transform: translate(0, 0)  scale(1);     }
+  50%       { transform: translate(6px, -8px) scale(1.15); }
+}
+
+/* ── Paint brush gentle sway ─────────────────────────── */
+.aa-brush {
+  transform-box: view-box;
+  transform-origin: 50% 75%;
+  animation: aa-brush-sway 4.8s ease-in-out infinite;
+}
+
+@keyframes aa-brush-sway {
+  0%, 100% { transform: rotate(0deg);     }
+  40%       { transform: rotate(2.5deg);  }
+  70%       { transform: rotate(-1.5deg); }
+}
+
+/* ── Paint palette subtle bob ────────────────────────── */
+.aa-palette {
+  transform-box: view-box;
+  transform-origin: 20% 75%;
+  animation: aa-palette-bob 5.8s ease-in-out infinite reverse;
+}
+
+@keyframes aa-palette-bob {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(5px); }
+}
+
+/* ── Status tag ──────────────────────────────────────── */
+.aa-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 8px 20px;
+  background: rgba(13, 10, 6, 0.9);
+  border: 1px solid rgba(240, 165, 0, 0.22);
+  border-radius: 100px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(250, 243, 224, 0.55);
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+}
+
+.aa-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80, 0 0 16px rgba(74, 222, 128, 0.4);
+  flex-shrink: 0;
+  animation: aa-online-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes aa-online-pulse {
+  0%, 100% { opacity: 1; transform: scale(1);    }
+  50%       { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* ── Hover hint ──────────────────────────────────────── */
+.aa-hint {
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250, 243, 224, 0.22);
+  animation: aa-hint-breathe 3s ease-in-out infinite;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.aa-hint-hide {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+@keyframes aa-hint-breathe {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+
+/* ── Mobile adjustments ──────────────────────────────── */
+@media (max-width: 768px) {
+  .aa-svg {
+    max-width: 220px;
+  }
+
+  .aa-status {
+    font-size: 10px;
+    padding: 7px 16px;
+  }
+}

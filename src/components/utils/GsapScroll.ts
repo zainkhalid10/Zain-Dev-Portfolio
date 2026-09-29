@@ -137,10 +137,9 @@ export function setAllTimeline() {
 
   sections.forEach((section) => {
     const timelineLine = section.querySelector(".career-timeline");
-    const timelineDot = section.querySelector(".career-dot");
     const infoBoxes = section.querySelectorAll(".career-info-box");
 
-    if (!timelineLine || !timelineDot || infoBoxes.length === 0) return;
+    if (!timelineLine || infoBoxes.length === 0) return;
 
     const careerTimeline = gsap.timeline({
       scrollTrigger: {
@@ -169,16 +168,6 @@ export function setAllTimeline() {
         infoBoxes,
         { opacity: 0 },
         { opacity: 1, stagger: 0.1, duration: 0.5 },
-        0
-      )
-      .fromTo(
-        timelineDot,
-        { animationIterationCount: "infinite" },
-        {
-          animationIterationCount: "1",
-          delay: 0.3,
-          duration: 0.1,
-        },
         0
       );
 

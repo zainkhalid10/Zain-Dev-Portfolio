@@ -13,6 +13,7 @@ const CoCurricular = () => {
   return (
     <div className="career-section section-container">
       <div className="career-container">
+        <span className="section-eyebrow career-eyebrow">Leadership</span>
         <h2>
           Co-curricular <span>&</span>
           <br /> leadership

@@ -4,17 +4,38 @@
   text-wrap: nowrap;
   overflow: hidden;
 }
+
 .hover-in {
   position: relative;
-  transition: 0.3s;
+  transition: transform 0.45s var(--easeOut, cubic-bezier(0.22, 1, 0.36, 1));
 }
+
 .hover-in div {
   display: flex;
   position: absolute;
   top: 100%;
   left: 0;
 }
-.hover-link:hover .hover-in {
+
+.nav-link-line {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accentColor);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--easeOut, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.hover-link:hover .hover-in,
+.hover-link:focus-visible .hover-in {
   transform: translateY(-100%);
   color: var(--accentColor);
+}
+
+.hover-link:hover .nav-link-line,
+.nav-active .nav-link-line {
+  transform: scaleX(1);
 }

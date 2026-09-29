@@ -4,53 +4,48 @@ import { config } from "../config";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
+import { shouldAnimate } from "./utils/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   useEffect(() => {
+    if (!shouldAnimate()) return;
+
     const contactTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".contact-section",
-        start: "top 80%",
+        start: "top 78%",
         end: "bottom center",
         toggleActions: "play none none none",
       },
     });
 
-    // Animate title from bottom
-    contactTimeline.fromTo(
-      ".contact-section h3",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }
-    );
+    contactTimeline
+      .fromTo(
+        ".contact-eyebrow",
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }
+      )
+      .fromTo(
+        ".contact-section h3",
+        { opacity: 0, y: 36 },
+        { opacity: 1, y: 0, duration: 0.75, ease: "power3.out" },
+        "-=0.3"
+      )
+      .fromTo(
+        ".contact-box",
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: "power3.out",
+        },
+        "-=0.45"
+      );
 
-    // Animate contact boxes with stagger from bottom
-    contactTimeline.fromTo(
-      ".contact-box",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-
-    // Clean up
     return () => {
       contactTimeline.kill();
     };
@@ -59,9 +54,10 @@ const Contact = () => {
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
+        <span className="section-eyebrow contact-eyebrow">Get in touch</span>
         <h3>{config.developer.fullName}</h3>
-        <div className="contact-flex">
-          <div className="contact-box">
+        <div className="contact-flex reveal-stagger">
+          <div className="contact-box reveal-item">
             <h4>Email</h4>
             <p>
               <a href={`mailto:${config.contact.email}`} data-cursor="disable">
@@ -73,7 +69,7 @@ const Contact = () => {
               <span>{config.social.location}</span>
             </p>
           </div>
-          <div className="contact-box">
+          <div className="contact-box reveal-item">
             <h4>Social</h4>
             <a
               href={config.contact.github}
@@ -82,7 +78,7 @@ const Contact = () => {
               data-cursor="disable"
               className="contact-social"
             >
-              Github <MdArrowOutward />
+              Github <MdArrowOutward aria-hidden="true" />
             </a>
             <a
               href={config.contact.linkedin}
@@ -91,7 +87,7 @@ const Contact = () => {
               data-cursor="disable"
               className="contact-social"
             >
-              Linkedin <MdArrowOutward />
+              Linkedin <MdArrowOutward aria-hidden="true" />
             </a>
             <a
               href={config.contact.twitter}
@@ -100,7 +96,7 @@ const Contact = () => {
               data-cursor="disable"
               className="contact-social"
             >
-              Twitter <MdArrowOutward />
+              Twitter <MdArrowOutward aria-hidden="true" />
             </a>
             <a
               href={config.contact.facebook}
@@ -109,7 +105,7 @@ const Contact = () => {
               data-cursor="disable"
               className="contact-social"
             >
-              Facebook <MdArrowOutward />
+              Facebook <MdArrowOutward aria-hidden="true" />
             </a>
             <a
               href={config.contact.instagram}
@@ -118,15 +114,15 @@ const Contact = () => {
               data-cursor="disable"
               className="contact-social"
             >
-              Instagram <MdArrowOutward />
+              Instagram <MdArrowOutward aria-hidden="true" />
             </a>
           </div>
-          <div className="contact-box">
+          <div className="contact-box reveal-item contact-box-closing">
             <h2>
               Designed and Developed <br /> by <span>{config.developer.fullName}</span>
             </h2>
             <h5>
-              <MdCopyright /> {new Date().getFullYear()}
+              <MdCopyright aria-hidden="true" /> {new Date().getFullYear()}
             </h5>
           </div>
         </div>

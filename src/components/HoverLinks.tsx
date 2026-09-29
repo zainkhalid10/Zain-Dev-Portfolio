@@ -6,6 +6,7 @@ const HoverLinks = ({ text, cursor }: { text: string; cursor?: boolean }) => {
       <div className="hover-in">
         {text} <div>{text}</div>
       </div>
+      <span className="nav-link-line" />
     </div>
   );
 };

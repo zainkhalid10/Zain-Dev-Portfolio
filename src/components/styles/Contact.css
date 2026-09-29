@@ -1,6 +1,6 @@
 .contact-section {
   margin: auto;
-  padding-bottom: 150px;
+  padding: 100px 0 150px;
   margin-top: 0;
   position: relative;
   z-index: 1;
@@ -9,131 +9,185 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border-top: 1px solid var(--borderColor);
 }
+
+.contact-eyebrow {
+  margin-bottom: 16px;
+}
+
 .contact-section h3 {
-  font-size: 32px;
-  font-weight: 400;
-  text-transform: uppercase;
-  margin: 0;
-  margin-bottom: 30px;
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  margin: 0 0 48px;
+  line-height: 1.05;
 }
+
 .contact-flex {
   display: flex;
   justify-content: space-between;
+  gap: 40px;
 }
+
 .contact-flex h4 {
   font-weight: 500;
   margin: 0;
-  opacity: 0.6;
-  font-size: 14px;
+  opacity: 0.55;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
+
 .contact-box {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
+
 .contact-flex p {
   margin-top: 8px;
-  margin-bottom: 15px;
-  font-size: 14px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.5;
 }
+
+.contact-flex p a {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s var(--easeOut);
+}
+
+.contact-flex p a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--accentColor);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--easeOut);
+}
+
+.contact-flex p a:hover::after,
+.contact-flex p a:focus-visible::after {
+  transform: scaleX(1);
+}
+
 a.contact-social {
-  font-size: 16px;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 17px;
+  font-weight: 400;
+  border-bottom: 1px solid var(--borderColor);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  width: fit-content;
+  transition:
+    color 0.3s var(--easeOut),
+    border-color 0.3s var(--easeOut),
+    gap 0.3s var(--easeOut);
 }
+
+a.contact-social:hover,
+a.contact-social:focus-visible {
+  border-color: var(--accentColor);
+  gap: 10px;
+}
+
 .contact-box h2 {
   font-weight: 400;
   font-size: 16px;
   margin: 0;
-  line-height: 22px;
+  line-height: 1.5;
+  color: var(--textMuted);
 }
+
 .contact-box h2 > span {
   color: var(--accentColor);
 }
-.contact-box h5 {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 14px;
-  display: flex;
-  gap: 8px;
-  opacity: 0.5;
+
+.contact-box-closing {
+  justify-content: flex-end;
 }
+
+.contact-box h5 {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.45;
+  margin-top: 20px;
+}
+
 @media only screen and (min-width: 600px) {
   .contact-section h3 {
     font-size: 40px;
   }
-  .contact-box h2 {
-    font-size: 18px;
-  }
+
   a.contact-social {
     font-size: 18px;
   }
-  .contact-flex h4 {
-    font-size: 15px;
-  }
-  .contact-flex p {
-    font-size: 15px;
-  }
 }
+
 @media only screen and (min-width: 900px) {
   .contact-section h3 {
     font-size: 48px;
   }
-  .contact-box h2 {
+
+  a.contact-social {
     font-size: 20px;
   }
-  a.contact-social {
-    font-size: 22px;
-  }
 }
+
 @media only screen and (min-width: 1300px) {
   .contact-section h3 {
     font-size: 55px;
   }
-  .contact-box h2 {
+
+  a.contact-social {
     font-size: 22px;
   }
-  a.contact-social {
-    font-size: 24px;
-  }
 }
-@media only screen and (min-width: 1600px) {
-  .contact-section h3 {
-    font-size: 60px;
-    margin-bottom: 40px;
-  }
-  .contact-box h2 {
-    font-size: 23px;
-  }
-  a.contact-social {
-    font-size: 25px;
-  }
-  .contact-flex p {
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-  .contact-box h5 {
-    font-size: 20px;
-    line-height: 20px;
-    gap: 10px;
-  }
-}
+
 @media only screen and (max-width: 900px) {
   .contact-flex {
     flex-direction: column;
-    gap: 40px;
+    gap: 36px;
   }
+
   .contact-flex p {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
+
   .contact-flex h4 {
-    margin-top: 20px;
+    margin-top: 16px;
   }
+
   .contact-section {
-    margin-top: 50px;
-    padding-bottom: 50px;
+    margin-top: 40px;
+    padding: 60px 0 80px;
   }
+
   .contact-container {
     width: calc(100% - 25px);
+  }
+
+  .contact-box-closing {
+    padding-top: 24px;
+    border-top: 1px solid var(--borderColor);
+  }
+}
+
+@media (hover: none) {
+  .contact-flex p a::after {
+    transform: scaleX(1);
+    opacity: 0.35;
   }
 }

@@ -13,6 +13,7 @@ const Career = () => {
   return (
     <div className="career-section section-container">
       <div className="career-container">
+        <span className="section-eyebrow career-eyebrow">Experience</span>
         <h2>
           My career <span>&</span>
           <br /> experience

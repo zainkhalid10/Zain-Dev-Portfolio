@@ -1,0 +1,519 @@
+/* ======================================================
+   GATEWAY — Portfolio Selector
+   ====================================================== */
+
+/* ── Layout ──────────────────────────────────────────── */
+.gw-root {
+  position: fixed;
+  inset: 0;
+  background: #08060a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: "Geist", sans-serif;
+  z-index: 0;
+}
+
+.gw-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* ── Ambient Background ──────────────────────────────── */
+.gw-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.gw-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+.gw-orb-purple {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(194, 164, 255, 0.22) 0%, transparent 70%);
+  top: -220px;
+  left: -160px;
+  animation: gw-drift 12s ease-in-out infinite;
+}
+
+.gw-orb-amber {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(240, 165, 0, 0.18) 0%, transparent 70%);
+  bottom: -180px;
+  right: -120px;
+  animation: gw-drift 15s ease-in-out infinite reverse;
+  animation-delay: -4s;
+}
+
+.gw-orb-center {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(194, 164, 255, 0.06) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: gw-pulse 6s ease-in-out infinite;
+}
+
+@keyframes gw-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.06); }
+  66%       { transform: translate(-25px, 40px) scale(0.96); }
+}
+
+@keyframes gw-pulse {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 0.9; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* Fine grid */
+.gw-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* Vignette */
+.gw-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 90% at 50% 50%, transparent 40%, #08060a 100%);
+}
+
+/* Film grain */
+.gw-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  pointer-events: none;
+}
+
+/* ── Transition Curtain ──────────────────────────────── */
+.gw-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
+.gw-curtain[data-type="dev"]      { background: #0b080c; }
+.gw-curtain[data-type="creative"] { background: #0d0a06; }
+
+/* ── Header ──────────────────────────────────────────── */
+.gw-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.gw-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(234, 229, 236, 0.35);
+  margin-bottom: 22px;
+  opacity: 0;
+}
+
+.gw-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accentColor, #c2a4ff);
+  animation: gw-blink 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes gw-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+.gw-title {
+  font-size: clamp(2.6rem, 6.5vw, 5.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: #eae5ec;
+  margin: 0 0 22px;
+  opacity: 0;
+}
+
+.gw-title em {
+  font-style: italic;
+  background: linear-gradient(135deg, #c2a4ff 0%, #f0a500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gw-subtitle {
+  font-size: 14px;
+  color: rgba(234, 229, 236, 0.38);
+  margin: 0;
+  letter-spacing: 0.06em;
+  opacity: 0;
+}
+
+/* ── Selector Row ────────────────────────────────────── */
+.gw-selector {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 840px;
+  gap: 0;
+}
+
+/* ── Card Base ───────────────────────────────────────── */
+.gw-card {
+  flex: 1;
+  position: relative;
+  padding: 46px 40px 42px;
+  border-radius: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  text-align: left;
+  opacity: 0;
+  transition: transform 0.1s ease;
+}
+
+/* Prevent layout shift on transform */
+.gw-card:active {
+  transform: scale(0.98);
+}
+
+/* Frosted glass fill */
+.gw-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-color 0.35s ease, background 0.35s ease;
+}
+
+/* Bottom glow that appears on hover */
+.gw-card-glow-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.gw-card-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Developer Card ──────────────────────────────────── */
+.gw-card-dev .gw-card-border {
+  background: linear-gradient(145deg, rgba(194, 164, 255, 0.07) 0%, rgba(11, 8, 12, 0.75) 100%);
+  border: 1px solid rgba(194, 164, 255, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.gw-card-dev:hover .gw-card-border {
+  border-color: rgba(194, 164, 255, 0.42);
+  background: linear-gradient(145deg, rgba(194, 164, 255, 0.1) 0%, rgba(11, 8, 12, 0.8) 100%);
+}
+
+.gw-card-dev .gw-card-glow-fill {
+  background: radial-gradient(ellipse at 50% 110%, rgba(194, 164, 255, 0.35) 0%, transparent 65%);
+}
+
+.gw-card-dev:hover .gw-card-glow-fill { opacity: 1; }
+
+/* CRT scan-lines overlay on dev card */
+.gw-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(194, 164, 255, 0.012) 3px,
+    rgba(194, 164, 255, 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+  animation: scanline-drift 8s linear infinite;
+}
+
+@keyframes scanline-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+/* Dev icon — code brackets */
+.gw-icon-dev {
+  font-family: "Geist Mono", "Courier New", monospace;
+  font-size: 2.2rem;
+  color: #c2a4ff;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin-bottom: 26px;
+  line-height: 1;
+}
+
+.gw-icon-dev .bracket { color: #c2a4ff; }
+.gw-icon-dev .slash   { color: rgba(194, 164, 255, 0.45); font-size: 1.5rem; }
+
+/* ── Creative Card ───────────────────────────────────── */
+.gw-card-creative .gw-card-border {
+  background: linear-gradient(145deg, rgba(240, 165, 0, 0.07) 0%, rgba(13, 10, 6, 0.75) 100%);
+  border: 1px solid rgba(240, 165, 0, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.gw-card-creative:hover .gw-card-border {
+  border-color: rgba(240, 165, 0, 0.42);
+  background: linear-gradient(145deg, rgba(240, 165, 0, 0.1) 0%, rgba(13, 10, 6, 0.8) 100%);
+}
+
+.gw-card-creative .gw-card-glow-fill {
+  background: radial-gradient(ellipse at 50% 110%, rgba(240, 165, 0, 0.35) 0%, transparent 65%);
+}
+
+.gw-card-creative:hover .gw-card-glow-fill { opacity: 1; }
+
+/* Creative icon — star */
+.gw-icon-creative {
+  font-size: 2.6rem;
+  color: #f0a500;
+  margin-bottom: 26px;
+  line-height: 1;
+  display: block;
+  animation: gw-star-spin 12s linear infinite;
+  width: fit-content;
+}
+
+@keyframes gw-star-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Shared Card Text ────────────────────────────────── */
+.gw-card-label {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(234, 229, 236, 0.38);
+  margin-bottom: 10px;
+}
+
+.gw-card-name {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin: 0 0 14px;
+  line-height: 1;
+  color: #eae5ec;
+}
+
+.gw-card-desc {
+  font-size: 13.5px;
+  color: rgba(234, 229, 236, 0.48);
+  line-height: 1.65;
+  margin: 0 0 30px;
+}
+
+.gw-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 28px;
+  transition: gap 0.25s ease;
+}
+
+.gw-card-dev .gw-enter      { color: #c2a4ff; }
+.gw-card-creative .gw-enter { color: #f0a500; }
+
+.gw-card:hover .gw-enter { gap: 14px; }
+
+.gw-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+.gw-card:hover .gw-arrow { transform: translateX(5px); }
+
+/* Chips */
+.gw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.gw-chips span {
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 100px;
+  border: 1px solid;
+  color: rgba(234, 229, 236, 0.4);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.gw-card-dev .gw-chips span {
+  border-color: rgba(194, 164, 255, 0.18);
+  background: rgba(194, 164, 255, 0.04);
+}
+.gw-card-dev:hover .gw-chips span {
+  border-color: rgba(194, 164, 255, 0.35);
+  color: rgba(194, 164, 255, 0.7);
+  background: rgba(194, 164, 255, 0.07);
+}
+
+.gw-card-creative .gw-chips span {
+  border-color: rgba(240, 165, 0, 0.18);
+  background: rgba(240, 165, 0, 0.04);
+}
+.gw-card-creative:hover .gw-chips span {
+  border-color: rgba(240, 165, 0, 0.35);
+  color: rgba(240, 165, 0, 0.75);
+  background: rgba(240, 165, 0, 0.07);
+}
+
+/* ── Divider ─────────────────────────────────────────── */
+.gw-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px;
+  gap: 14px;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.gw-divider-line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+}
+
+.gw-divider-or {
+  font-size: 10px;
+  color: rgba(234, 229, 236, 0.28);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+
+/* ── Bottom hint ─────────────────────────────────────── */
+.gw-hint {
+  margin-top: 32px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(234, 229, 236, 0.18);
+  animation: gw-hint-pulse 3s ease-in-out infinite;
+}
+
+@keyframes gw-hint-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .gw-root {
+    position: relative;
+    min-height: 100svh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: flex-start;
+    padding: 48px 0 48px;
+  }
+
+  .gw-content {
+    padding: 0 20px;
+  }
+
+  .gw-header {
+    margin-bottom: 36px;
+  }
+
+  .gw-selector {
+    flex-direction: column;
+    gap: 0;
+    max-width: 100%;
+  }
+
+
+  /* gw-divider mobile size now handled inside the component CSS block above */
+
+
+  .gw-card {
+    padding: 36px 28px;
+    border-radius: 20px;
+  }
+
+  .gw-card-name {
+    font-size: 2.2rem;
+  }
+
+  .gw-hint {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gw-title {
+    font-size: 2.4rem;
+  }
+
+  .gw-card {
+    padding: 28px 22px;
+  }
+}

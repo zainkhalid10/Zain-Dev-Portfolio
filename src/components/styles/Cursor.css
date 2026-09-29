@@ -7,25 +7,48 @@
   height: var(--size);
   border-radius: 50px;
   pointer-events: none;
-  z-index: 99;
-  background-color: #e6c3ff;
-  box-shadow: 0px 0px 30px 0px rgb(175, 131, 255);
+  z-index: 9998;
+  background-color: rgba(194, 164, 255, 0.85);
   mix-blend-mode: difference;
-  transition: top 0.3s ease-out, left 0.3s ease-out, width 0.3s ease-out,
-    height 0.3s ease-out;
+  transition:
+    width 0.35s var(--easeOut, cubic-bezier(0.22, 1, 0.36, 1)),
+    height 0.35s var(--easeOut, cubic-bezier(0.22, 1, 0.36, 1)),
+    opacity 0.3s ease;
 }
+
+.cursor-hover {
+  --size: 72px !important;
+  opacity: 0.6;
+}
+
 .cursor-icons {
   top: 10px;
   left: 10px;
   height: calc(var(--cursorH) - 20px);
   transition: all 0.5s ease-out, height 0.5s ease-in-out;
 }
+
 .cursor-disable {
   --size: 0px;
 }
+
+/* ── Particle trail dots ─────────────────────────── */
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  background: rgba(194, 164, 255, 0.75);
+  mix-blend-mode: screen;
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+
 @media only screen and (min-width: 600px) {
   .cursor-main {
-    --size: 50px;
+    --size: 12px;
   }
   .cursor-disable {
     --size: 0px;
