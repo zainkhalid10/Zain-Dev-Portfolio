@@ -431,19 +431,21 @@
   .work-section {
     height: auto;
     min-height: auto;
+    overflow-x: hidden;
   }
 
   .work-flex {
     flex-direction: column;
-    margin-left: 0;
-    padding-right: 0;
+    margin-left: 0;        /* was -80px — caused horizontal bleed */
+    padding-right: 0;      /* was 120px */
     gap: 0;
+    overflow-x: hidden;
   }
 
   .work-box {
     width: 100%;
     max-width: 100%;
-    padding: 30px 15px;
+    padding: 28px 16px;
     border-right: none;
     border-bottom: 1px solid var(--borderColor);
     gap: 20px;
@@ -454,34 +456,34 @@
   }
 
   .work-section h2 {
-    font-size: 36px;
+    font-size: 34px;
   }
 
   .work-heading {
-    margin-top: 50px;
+    margin-top: 48px;
     margin-bottom: 20px;
   }
 
   .work-title h3 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 26px;
+    line-height: 1.2;
   }
 
   .work-info h4 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .work-image img {
-    max-height: 200px;
+    max-height: 190px;
   }
 
   .work-box-cta {
-    padding: 40px 20px;
+    padding: 36px 16px;
     border-bottom: none;
   }
 
   .see-all-works h3 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .see-all-works p {

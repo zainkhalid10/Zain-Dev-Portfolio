@@ -10,6 +10,35 @@ export function initialFX() {
   }
   document.getElementsByTagName("main")[0].classList.add("main-active");
 
+  // ── Mobile: skip all GSAP, make everything visible immediately ───────────
+  if (window.innerWidth <= 768) {
+    const mobileReveal = [
+      ".landing-ambient-orb--1",
+      ".landing-ambient-orb--2",
+      ".landing-grid",
+      ".landing-horizon",
+      ".landing-spotlight",
+      ".landing-vignette",
+      ".landing-badge",
+      ".landing-status",
+      ".landing-tagline",
+      ".landing-info-h2",
+      ".landing-actions",
+      ".landing-scroll-cue",
+      ".mobile-photo",
+      ".landing-info h3",
+      ".landing-role-primary",
+      ".landing-role-secondary",
+      ".landing-info-roles",
+      ".header",
+      ".icons-section",
+      ".landing-greeting",
+      ".landing-name",
+    ];
+    gsap.set(mobileReveal, { opacity: 1, clearProps: "transform,filter,y,x,scale" });
+    return;
+  }
+
   if (prefersReducedMotion()) {
     gsap.set(
       [
