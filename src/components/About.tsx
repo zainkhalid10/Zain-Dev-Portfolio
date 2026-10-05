@@ -1,5 +1,6 @@
 import "./styles/About.css";
 import { config } from "../config";
+import GitHubGraph from "./GitHubGraph";
 
 const About = () => {
   return (
@@ -8,6 +9,7 @@ const About = () => {
         <h3 className="title">{config.about.title}</h3>
         <p className="para">{config.about.description}</p>
       </div>
+      <GitHubGraph />
     </div>
   );
 };

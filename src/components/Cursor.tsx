@@ -99,6 +99,42 @@ const Cursor = () => {
       };
     });
 
+    // ── Content-aware cursor mode ───────────────────────────────────────────
+    // Sections tagged with data-cursor-zone="code" show terminal cursor label
+    let modeLabel: HTMLSpanElement | null = null;
+
+    const setMode = (mode: "code" | "art" | null) => {
+      cursor.classList.remove("cursor-mode-code", "cursor-mode-art");
+      modeLabel?.remove();
+      modeLabel = null;
+      if (!mode) return;
+      cursor.classList.add(`cursor-mode-${mode}`);
+      modeLabel = document.createElement("span");
+      modeLabel.className = "cursor-mode-label";
+      modeLabel.textContent = mode === "code" ? "</>" : "✦";
+      cursor.appendChild(modeLabel);
+    };
+
+    // Tag sections automatically
+    const workSection  = document.getElementById("work");
+    const aboutSection = document.getElementById("about");
+
+    const zonedEls: { el: HTMLElement; mode: "code" | "art" }[] = [
+      ...(workSection  ? [{ el: workSection,  mode: "code" as const }] : []),
+      ...(aboutSection ? [{ el: aboutSection, mode: "code" as const }] : []),
+    ];
+
+    const zoneCleanups = zonedEls.map(({ el, mode }) => {
+      const enter = () => setMode(mode);
+      const leave = () => setMode(null);
+      el.addEventListener("mouseenter", enter);
+      el.addEventListener("mouseleave", leave);
+      return () => {
+        el.removeEventListener("mouseenter", enter);
+        el.removeEventListener("mouseleave", leave);
+      };
+    });
+
     // ── hover expand ────────────────────────────────────
     const interactiveEls = document.querySelectorAll(
       "a, button, .work-box, .see-all-btn, .cta-btn"
@@ -123,7 +159,9 @@ const Cursor = () => {
       cancelAnimationFrame(rafId);
       document.removeEventListener("mousemove", onMouseMove);
       trail.forEach((d) => d.el.remove());
+      modeLabel?.remove();
       dataCleanups.forEach((fn) => fn());
+      zoneCleanups.forEach((fn) => fn());
       interactiveCleanups.forEach((fn) => fn());
     };
   }, []);

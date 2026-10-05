@@ -1080,3 +1080,18 @@
   .cp2-hero-disciplines span { animation: none; }
   .cp2-card-star       { animation: none; }
 }
+
+/* ── Paint With Me section ──────────────────────────────────────────────── */
+.cp2-paint-section {
+  background: #0d0a06;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.cp2-section-sub {
+  font-size: 16px;
+  color: rgba(234, 229, 236, 0.5);
+  margin-top: 8px;
+  margin-bottom: 32px;
+  max-width: 480px;
+}

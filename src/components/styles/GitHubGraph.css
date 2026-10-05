@@ -1,0 +1,128 @@
+/* ── GitHubGraph.css ───────────────────────────────────────────────────── */
+
+.gh-root {
+  position: relative;
+  padding: 28px 0 20px;
+}
+
+.gh-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gh-title {
+  font-size: 12px;
+  color: rgba(234, 229, 236, 0.55);
+  letter-spacing: 0.06em;
+}
+
+.gh-link {
+  font-size: 12px;
+  color: var(--accentColor);
+  opacity: 0.75;
+  transition: opacity 0.25s;
+  text-decoration: none;
+}
+.gh-link:hover { opacity: 1; }
+
+/* Scroll container (shows all 52 weeks, scrollable on small screens) */
+.gh-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(194, 164, 255, 0.15) transparent;
+}
+.gh-scroll::-webkit-scrollbar { height: 3px; }
+.gh-scroll::-webkit-scrollbar-thumb { background: rgba(194, 164, 255, 0.18); border-radius: 2px; }
+
+/* Month labels row */
+.gh-months {
+  position: relative;
+  height: 18px;
+  margin-left: 32px;
+}
+
+.gh-month-label {
+  position: absolute;
+  font-size: 10px;
+  color: rgba(234, 229, 236, 0.35);
+  letter-spacing: 0.05em;
+  transform: translateX(-50%);
+}
+
+/* Grid row = day labels + svg */
+.gh-grid-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.gh-days {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.gh-day-label {
+  font-size: 9px;
+  color: rgba(234, 229, 236, 0.28);
+  height: 13px;
+  line-height: 13px;
+  width: 28px;
+  text-align: right;
+  padding-right: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* SVG cells */
+.gh-svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.gh-cell {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gh-cell:hover { opacity: 0.7; }
+
+/* Legend */
+.gh-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.gh-legend-label {
+  font-size: 10px;
+  color: rgba(234, 229, 236, 0.3);
+}
+
+.gh-legend-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* Tooltip */
+.gh-tooltip {
+  position: fixed;
+  transform: translateX(-50%) translateY(-100%);
+  background: #1a1726;
+  border: 1px solid rgba(194, 164, 255, 0.22);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: #eae5ec;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}

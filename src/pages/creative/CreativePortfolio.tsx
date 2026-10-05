@@ -20,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Lazy-load the canvas so it doesn't block initial paint
 const PaintCanvas = lazy(() => import('./PaintCanvas'));
 const HouseCanvas = lazy(() => import('./HouseCanvas'));
+const MiniPaint   = lazy(() => import('./MiniPaint'));
 
 // ── Content ──────────────────────────────────────────────────────────────────
 const profile = {
@@ -706,6 +707,22 @@ export default function CreativePortfolio() {
             <a href={profile.instagramCreative} target="_blank" rel="noopener noreferrer">Art Page</a>
             <span aria-hidden="true">·</span>
             <a href={profile.linkedin}          target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        {/* ── Interactive paint section ─────────────────────────────────── */}
+        <div className="cp2-section cp2-paint-section">
+          <div className="cp2-container">
+            <span className="cp2-eyebrow cp2-reveal">Interactive</span>
+            <h2 className="cp2-section-title cp2-reveal">Paint With Me</h2>
+            <p className="cp2-section-sub cp2-reveal">
+              Art is participation. Make something — it's yours.
+            </p>
+            <div className="cp2-reveal">
+              <Suspense fallback={<div style={{ height: 420, background: 'rgba(255,255,255,0.02)', borderRadius: 16 }} />}>
+                <MiniPaint />
+              </Suspense>
+            </div>
           </div>
         </div>
 

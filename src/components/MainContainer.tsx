@@ -11,6 +11,7 @@ import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
+import CommandPalette from "./CommandPalette";
 import setSplitText from "./utils/splitText";
 import { initScrollReveals } from "./utils/motion";
 
@@ -39,6 +40,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   return (
     <div className="container-main">
       <Cursor />
+      <CommandPalette />
       <Navbar />
       <SocialIcons />
       {isDesktopView && !isMobile && children}

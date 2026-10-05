@@ -64,13 +64,58 @@ const Work = () => {
         }
       );
 
+      // ── 3D Tilt on work cards ───────────────────────────────────────────
+      const boxes = document.querySelectorAll<HTMLElement>(".work-box:not(.work-box-cta)");
+      const tiltCleanups: (() => void)[] = [];
+
+      boxes.forEach(box => {
+        const onMove = (e: MouseEvent) => {
+          const rect  = box.getBoundingClientRect();
+          const cx    = rect.left + rect.width  / 2;
+          const cy    = rect.top  + rect.height / 2;
+          const dx    = (e.clientX - cx) / (rect.width  / 2);
+          const dy    = (e.clientY - cy) / (rect.height / 2);
+          const MAX   = 6; // max degrees tilt
+          gsap.to(box, {
+            rotateY:  dx * MAX,
+            rotateX: -dy * MAX,
+            duration: 0.45,
+            ease: "power2.out",
+            transformPerspective: 900,
+            transformOrigin: "center center",
+          });
+          // Spotlight glow tracks mouse
+          box.style.setProperty("--tilt-x", `${((e.clientX - rect.left) / rect.width) * 100}%`);
+          box.style.setProperty("--tilt-y", `${((e.clientY - rect.top)  / rect.height) * 100}%`);
+          box.classList.add("work-box-tilted");
+        };
+
+        const onLeave = () => {
+          gsap.to(box, {
+            rotateY: 0, rotateX: 0,
+            duration: 0.8,
+            ease: "elastic.out(1, 0.4)",
+          });
+          box.classList.remove("work-box-tilted");
+        };
+
+        box.addEventListener("mousemove",  onMove);
+        box.addEventListener("mouseleave", onLeave);
+        tiltCleanups.push(() => {
+          box.removeEventListener("mousemove",  onMove);
+          box.removeEventListener("mouseleave", onLeave);
+        });
+      });
+
       ScrollTrigger.refresh();
 
       return () => {
         timeline.kill();
         ScrollTrigger.getById("work")?.kill();
+        tiltCleanups.forEach(fn => fn());
       };
     });
+
 
     mm.add("(max-width: 768px)", () => {
       if (!shouldAnimate()) return;
