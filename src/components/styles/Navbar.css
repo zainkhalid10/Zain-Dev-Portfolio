@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  padding: 15px calc((100% - var(--cWidth)) / 2);
+  padding: 15px max(48px, calc((100% - var(--cWidth)) / 2));
   box-sizing: border-box;
   z-index: 9999;
   /* backdrop-filter ALWAYS present so GPU layer is never recreated (prevents flicker) */
