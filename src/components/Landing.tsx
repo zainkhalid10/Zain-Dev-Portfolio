@@ -189,9 +189,6 @@ const Landing = ({ children }: PropsWithChildren) => {
             </div>
           </button>
 
-          <div className="mobile-photo">
-            <img src="/images/mypicnbg.png" alt={config.developer.fullName} />
-          </div>
         </div>
         {children}
       </div>
