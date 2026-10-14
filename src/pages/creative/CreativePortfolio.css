@@ -795,8 +795,8 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.88;
+  mix-blend-mode: screen;
+  opacity: 0.90;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
