@@ -790,8 +790,8 @@
 }
 
 .cp2-sart-logo {
-  max-width: min(260px, 60%);
-  max-height: 160px;
+  max-width: min(1300px, 95%);
+  max-height: 800px;
   width: auto;
   height: auto;
   object-fit: contain;
