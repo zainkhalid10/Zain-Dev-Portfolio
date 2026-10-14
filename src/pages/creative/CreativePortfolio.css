@@ -777,6 +777,63 @@
   to   { transform: rotate(360deg); }
 }
 
+/* ── Client logo + drive link ─────────────────────────────────────────────── */
+.cp2-sart-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cp2-sart-logo {
+  max-width: min(260px, 60%);
+  max-height: 160px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cp2-sart:hover .cp2-sart-logo {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.cp2-sart-drive-link {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent, #c8a0ff);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--accent, #c8a0ff);
+  border-radius: 100px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+}
+
+.cp2-sart:hover .cp2-sart-drive-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cp2-sart-drive-link:hover {
+  background: var(--accent, #c8a0ff);
+  color: #000;
+}
+
 
 /* ── Progress dots (vertical, right edge) ────────────────────── */
 .cp2-stack-dots {

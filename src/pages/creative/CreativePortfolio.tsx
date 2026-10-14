@@ -37,57 +37,80 @@ const profile = {
 const works = [
   {
     id: 1,
-    title: 'Flux Brand Identity',
-    category: 'Brand Design',
-    year: '2025',
-    description: 'Full brand identity system for a digital-first startup — logo mark, color palette, typography system, and visual language guide.',
-    tags: ['Branding', 'Figma', 'Identity'],
-    accent: '#c8a0ff',
+    title: 'NXTFIGHT',
+    category: 'Content Strategy & Production',
+    year: '2024 – 2025',
+    description: 'Ground-up content partner for a boxing platform connecting fighters, promoters, coaches, and gyms. Created videos, photography, walkthrough demos, moodboards, content calendars, and pitch decks — present from day one of the startup.',
+    tags: ['Video', 'Pitch Deck', 'Content Strategy', 'Social Media'],
+    accent: '#ff4d4d',
+    logo: '/images/clients/nxtfight.png',
+    driveLink: '',
   },
   {
     id: 2,
-    title: 'Nocturne UI Kit',
-    category: 'UI Design',
-    year: '2025',
-    description: 'Dark-mode UI component library. 200+ components built in Figma with systematic token architecture and developer handoff.',
-    tags: ['UI', 'Figma', 'Systems'],
-    accent: '#7eb8ff',
+    title: 'FYYTR',
+    category: 'Brand Content',
+    year: '2024 – 2025',
+    description: 'Sister brand to NXTFIGHT — a boxing and sports apparel label. Built the visual content identity from scratch alongside the founder, covering product visuals, campaign content, and social media assets.',
+    tags: ['Apparel', 'Video', 'Photography', 'Brand'],
+    accent: '#ff8c00',
+    logo: '/images/clients/FYYTR.png',
+    driveLink: '',
   },
   {
     id: 3,
-    title: 'Takhleeq — Campaign 2025',
-    category: 'Social Media',
+    title: 'ORA',
+    category: 'AI Video & Content',
     year: '2025',
-    description: "Led social media strategy and visual direction for Takhleeq FAST Islamabad's 2025 campaign series.",
-    tags: ['Social', 'Photography', 'Direction'],
-    accent: '#ffb0c8',
+    description: 'Swiss-founded legal tech platform for lawyers. Produced AI-generated video content to communicate the platform\'s value to a professional audience — clean, authoritative, and conversion-focused.',
+    tags: ['AI Video', 'Legal Tech', 'Content'],
+    accent: '#7eb8ff',
+    logo: '/images/clients/Ora.png',
+    driveLink: '',
   },
   {
     id: 4,
-    title: 'FAST Adventure — Annual Recap',
-    category: 'Video Production',
-    year: '2024',
-    description: 'Cinematic year-in-review video capturing 12 months of adventure events — edited and motion-designed in Premiere Pro.',
-    tags: ['Video', 'Motion', 'Editing'],
-    accent: '#7eddcc',
+    title: 'La Russiante',
+    category: 'Print & Brand Design',
+    year: '2025',
+    description: 'Swiss resort brand — designed premium cards, collateral, and visual assets aligned with the property\'s luxury positioning and European aesthetic.',
+    tags: ['Print', 'Branding', 'Luxury', 'Design'],
+    accent: '#c8a0ff',
+    logo: '/images/clients/Larussinate.png',
+    driveLink: '',
   },
   {
     id: 5,
-    title: 'Glyph — Poster Series',
-    category: 'Print Design',
-    year: '2024',
-    description: 'Six-piece experimental typography poster series exploring the boundaries of letterform and negative space.',
-    tags: ['Typography', 'Print', 'Concept'],
-    accent: '#ffc870',
+    title: 'KARVAN',
+    category: 'Photography, Video & Social Media',
+    year: '2024 – Present',
+    description: 'On-ground content partner and co-owner for a resort in Kumrat, Pakistan. Travelled to shoot, edit, and deliver cinematic content. Manage the full social media presence — strategy, posting, and community.',
+    tags: ['Photography', 'Video', 'Social Media', 'Travel'],
+    accent: '#7eddcc',
+    logo: '/images/clients/KARVAN.png',
+    driveLink: '',
   },
   {
     id: 6,
-    title: '3Musafir Visual Identity',
-    category: 'Brand & Photography',
+    title: 'LUX AUTOS',
+    category: 'AI Video Production',
     year: '2025',
-    description: 'Campus brand ambassador role — crafted visual templates, stories, and photography direction for travel campaigns.',
-    tags: ['Photography', 'Brand', 'Campaigns'],
+    description: 'Luxury car import/export brand — produced high-end AI-generated video content positioning the inventory for an aspirational clientele. Cinematic pacing, premium feel.',
+    tags: ['AI Video', 'Automotive', 'Luxury', 'Motion'],
+    accent: '#ffc870',
+    logo: '/images/clients/luxe autos.png',
+    driveLink: '',
+  },
+  {
+    id: 7,
+    title: 'Vector',
+    category: 'Brand Content & Rebranding',
+    year: '2025 – Present',
+    description: 'Current role as Brand Content Producer — rebranded the company website, produce AI-generated image content, and lead ongoing reels and social media content strategy.',
+    tags: ['Rebranding', 'AI Content', 'Reels', 'Social Media'],
     accent: '#a8d88a',
+    logo: '/images/clients/vector.png',
+    driveLink: '',
   },
 ];
 
@@ -625,7 +648,23 @@ export default function CreativePortfolio() {
                 style={{ '--accent': w.accent } as React.CSSProperties}
               >
                 <div className="cp2-scard-glow" />
-                <span className="cp2-scard-glyph" aria-hidden="true">✦</span>
+                <div className="cp2-sart-logo-wrap">
+                  <img
+                    src={w.logo}
+                    alt={`${w.title} logo`}
+                    className="cp2-sart-logo"
+                  />
+                </div>
+                {w.driveLink && (
+                  <a
+                    href={w.driveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cp2-sart-drive-link"
+                  >
+                    View Work ↗
+                  </a>
+                )}
               </div>
             ))}
           </div>
