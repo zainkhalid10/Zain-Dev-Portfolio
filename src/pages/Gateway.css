@@ -207,6 +207,10 @@
   text-align: left;
   opacity: 0;
   transition: transform 0.1s ease;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Prevent layout shift on transform */

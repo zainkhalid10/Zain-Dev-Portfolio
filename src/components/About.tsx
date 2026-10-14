@@ -8,8 +8,8 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">{config.about.title}</h3>
         <p className="para">{config.about.description}</p>
+        <GitHubGraph />
       </div>
-      <GitHubGraph />
     </div>
   );
 };

@@ -99,7 +99,7 @@ const Gateway = () => {
     return () => cleanups.forEach(fn => fn());
   }, [transitioning]);
 
-  // ── Card select → fire dive ─────────────────────────────────────────────────
+  // ── Card select → cinematic dive-in ──────────────────────────────────────────
   const handleSelect = (
     path: string,
     type: "dev" | "creative",
@@ -113,23 +113,103 @@ const Gateway = () => {
     const cx   = rect.left + rect.width  / 2;
     const cy   = rect.top  + rect.height / 2;
 
-    // Animate: cards + UI fade / scale out toward the click point
-    gsap.to(".gw-content", {
-      opacity:  0,
-      scale:    0.94,
-      duration: 0.5,
-      ease:     "power3.in",
+    // Calculate offset from viewport center to card center
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const dx = vw / 2 - cx;
+    const dy = vh / 2 - cy;
+
+    const color = type === "dev" ? DEV_COLOR : CREATE_COLOR;
+    const [cr, cg, cb] = color;
+
+    // ── Phase 1: Zoom the entire content toward the card ─────────────────────
+    const contentEl = containerRef.current?.querySelector(".gw-content") as HTMLElement;
+    if (contentEl) {
+      contentEl.style.transformOrigin = `${cx}px ${cy}px`;
+      contentEl.style.perspective = "1200px";
+    }
+
+    // Dim & blur all other elements (header, other card, divider, hint)
+    gsap.to(".gw-header", {
+      opacity: 0,
+      filter: "blur(18px)",
+      y: -40,
+      duration: 0.6,
+      ease: "power3.in",
     });
 
-    // Trigger dive canvas
-    setDive({
-      path,
-      target: {
-        cx,
-        cy,
-        color: type === "dev" ? DEV_COLOR : CREATE_COLOR,
-      },
+    gsap.to(".gw-hint", {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
     });
+
+    gsap.to(".gw-divider", {
+      opacity: 0,
+      scaleY: 0.3,
+      duration: 0.5,
+      ease: "power3.in",
+    });
+
+    // Fade & blur the OTHER card
+    const otherCard = type === "dev" ? ".gw-card-creative" : ".gw-card-dev";
+    gsap.to(otherCard, {
+      opacity: 0,
+      filter: "blur(20px)",
+      scale: 0.8,
+      x: type === "dev" ? 80 : -80,
+      duration: 0.55,
+      ease: "power3.in",
+    });
+
+    // ── Phase 2: The selected card zooms & scales dramatically ───────────────
+    const tl = gsap.timeline();
+
+    // Add glow burst behind selected card
+    cardEl.style.zIndex = "100";
+
+    tl.to(cardEl, {
+      x: dx,
+      y: dy,
+      scale: 1.15,
+      duration: 0.5,
+      ease: "power2.out",
+      boxShadow: `0 0 80px rgba(${cr},${cg},${cb},0.4), 0 0 160px rgba(${cr},${cg},${cb},0.2)`,
+    })
+    .to(cardEl, {
+      scale: 8,
+      duration: 0.7,
+      ease: "power3.in",
+      filter: "brightness(1.6) blur(4px)",
+      opacity: 0.6,
+    })
+    .to(cardEl, {
+      opacity: 0,
+      duration: 0.15,
+      ease: "none",
+    }, "-=0.15");
+
+    // Zoom the background into the card as well
+    gsap.to(".gw-bg", {
+      scale: 2.5,
+      opacity: 0,
+      filter: "blur(24px)",
+      duration: 1.1,
+      ease: "power2.in",
+      transformOrigin: `${cx}px ${cy}px`,
+    });
+
+    // ── Phase 3: Trigger the canvas DiveOverlay partway through ──────────────
+    setTimeout(() => {
+      setDive({
+        path,
+        target: {
+          cx: vw / 2,
+          cy: vh / 2,
+          color,
+        },
+      });
+    }, 400);
   };
 
   // Called when DiveOverlay animation finishes

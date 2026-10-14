@@ -461,7 +461,7 @@ export default function CreativePortfolio() {
       <section className="cp2-section cp2-hero" id="cp2-hero" aria-label="Hero">
         <div className="cp2-hero-inner">
           <span className="cp2-hero-label">
-            Creative Portfolio · 2025
+            Creative Portfolio
           </span>
 
           <h1 className="cp2-hero-title" aria-label={profile.tagline.replace('\n', ' ')}>

@@ -64,7 +64,10 @@
 @media only screen and (min-width: 1025px) {
   .about-section {
     width: var(--cWidth);
-    justify-content: flex-end;    /* push content to the right half */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;         /* push content to the right half */
+    justify-content: center;
     max-width: 1920px;
     height: var(--vh);
     padding: 0px;
