@@ -795,7 +795,6 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  mix-blend-mode: screen;
   opacity: 0.90;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }

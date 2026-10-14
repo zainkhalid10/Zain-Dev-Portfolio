@@ -44,6 +44,7 @@ const works = [
     tags: ['Video', 'Pitch Deck', 'Content Strategy', 'Social Media'],
     accent: '#ff4d4d',
     logo: '/images/clients/nxtfight.png',
+    logoBlend: 'normal' as const,
     driveLink: '',
   },
   {
@@ -55,6 +56,7 @@ const works = [
     tags: ['Apparel', 'Video', 'Photography', 'Brand'],
     accent: '#ff8c00',
     logo: '/images/clients/FYYTR.png',
+    logoBlend: 'screen' as const,
     driveLink: '',
   },
   {
@@ -66,6 +68,7 @@ const works = [
     tags: ['AI Video', 'Legal Tech', 'Content'],
     accent: '#7eb8ff',
     logo: '/images/clients/Ora.png',
+    logoBlend: 'screen' as const,
     driveLink: '',
   },
   {
@@ -77,6 +80,7 @@ const works = [
     tags: ['Print', 'Branding', 'Luxury', 'Design'],
     accent: '#c8a0ff',
     logo: '/images/clients/Larussinate.png',
+    logoBlend: 'screen' as const,
     driveLink: '',
   },
   {
@@ -88,6 +92,7 @@ const works = [
     tags: ['Photography', 'Video', 'Social Media', 'Travel'],
     accent: '#7eddcc',
     logo: '/images/clients/KARVAN.png',
+    logoBlend: 'screen' as const,
     driveLink: '',
   },
   {
@@ -99,6 +104,7 @@ const works = [
     tags: ['AI Video', 'Automotive', 'Luxury', 'Motion'],
     accent: '#ffc870',
     logo: '/images/clients/luxe autos.png',
+    logoBlend: 'screen' as const,
     driveLink: '',
   },
   {
@@ -110,6 +116,7 @@ const works = [
     tags: ['Rebranding', 'AI Content', 'Reels', 'Social Media'],
     accent: '#a8d88a',
     logo: '/images/clients/vector.png',
+    logoBlend: 'screen' as const,
     driveLink: '',
   },
 ];
@@ -653,6 +660,7 @@ export default function CreativePortfolio() {
                     src={w.logo}
                     alt={`${w.title} logo`}
                     className="cp2-sart-logo"
+                    style={{ mixBlendMode: w.logoBlend }}
                   />
                 </div>
                 {w.driveLink && (
